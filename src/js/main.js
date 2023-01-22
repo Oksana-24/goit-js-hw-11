@@ -87,6 +87,7 @@ async function getPicture(name, page = 1) {
     }
 }
 
+
 function inInfinityLoad(entries, observer) {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
