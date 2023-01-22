@@ -1,5 +1,5 @@
-function createMarkup(arrImages) {
-    console.log(arrImages)
+export default function createMarkup(arrImages) {
+    // console.log(arrImages)
 //webformatURL - посилання на маленьке зображення для списку карток.
 // largeImageURL - посилання на велике зображення.
 // tags - рядок з описом зображення. Підійде для атрибуту alt.
@@ -18,25 +18,25 @@ function createMarkup(arrImages) {
         `
     <a class="photo-link" href="${largeImageURL}">
         <div class="photo-card">
-        <img src="${webformatURL}" alt="${tags}" loading="lazy" />
+        <img  src="${webformatURL}" alt="${tags}" loading="lazy" width="200"/>
     <div class="info">
         <p class="info-item">
-        <b>Likes</b>${likes}
+        <b>Likes:</b><span class="info-item-details">${likes}</span>
         </p>
         <p class="info-item">
-        <b>Views</b>${views}
+        <b>Views</b><span class="info-item-details">${views}</span>
         </p>
         <p class="info-item">
-        <b>Comments</b>${comments}
+        <b>Comments</b><span class="info-item-details">${comments}</span>
         </p>
         <p class="info-item">
-        <b>Downloads</b>${downloads}
+        <b>Downloads</b><span class="info-item-details">${downloads}</span>
         </p>
     </div>
     </div>
 </a>`).join('');
 }
 
-export {
-    createMarkup
-}
+// export {
+//     createMarkup
+// }
