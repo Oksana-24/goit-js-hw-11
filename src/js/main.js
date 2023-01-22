@@ -1,9 +1,10 @@
 import axios, { formToJSON } from 'axios';
 // import apiInstance from './api';
-// import createMarkup from './markupService';
-import createMarkup from './markupService'
-import showGallary from './simpleLightBox'
 
+// import createMarkup from './markupService'
+import showGallary from './simpleLightBox'
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 
@@ -78,7 +79,8 @@ async function getPicture(name, page = 1) {
             Notify.success(`Hooray! We found ${response.data.total} images.`, { timeout: 1500 });
         }
 
-        gallery.insertAdjacentHTML('beforeend', createMarkup(response.data.hits))
+        // gallery.insertAdjacentHTML('beforeend', createMarkup(response.data.hits))
+        createMarkup(response.data.hits);
         observer.observe(guard);
         
         return response
@@ -86,7 +88,46 @@ async function getPicture(name, page = 1) {
         console.log(error)
     }
 }
-
+function createMarkup(arrImages) {
+    // console.log(arrImages)
+//webformatURL - посилання на маленьке зображення для списку карток.
+// largeImageURL - посилання на велике зображення.
+// tags - рядок з описом зображення. Підійде для атрибуту alt.
+// likes - кількість лайків.
+// views - кількість переглядів.
+// comments - кількість коментарів.
+// downloads - кількість завантажень.
+    const markup =  arrImages.map((
+        { webformatURL,
+            largeImageURL,
+            tags,
+            likes,
+            views,
+            comments,
+            downloads }) =>
+        `
+    <a class="photo-link" href="${largeImageURL}">
+        <div class="photo-card">
+        <img  src="${webformatURL}" alt="${tags}" loading="lazy" width="200"/>
+    <div class="info">
+        <p class="info-item">
+        <b>Likes:</b><span class="info-item-details">${likes}</span>
+        </p>
+        <p class="info-item">
+        <b>Views</b><span class="info-item-details">${views}</span>
+        </p>
+        <p class="info-item">
+        <b>Comments</b><span class="info-item-details">${comments}</span>
+        </p>
+        <p class="info-item">
+        <b>Downloads</b><span class="info-item-details">${downloads}</span>
+        </p>
+    </div>
+    </div>
+</a>`).join('');
+    gallery.insertAdjacentHTML('beforeend', markup);
+    // showGallary.refresh();
+}
 
 function inInfinityLoad(entries, observer) {
     entries.forEach((entry) => {
