@@ -1,4 +1,4 @@
-function showGallary() {
+export default function showGallary() {
     const gallery = document.querySelector('.gallery');
 
     gallery.addEventListener('click', onClickGallery);
@@ -14,6 +14,6 @@ function showGallary() {
     });
     }
 }
-export {
-    showGallary
- }
+// export {
+//     showGallary
+//  }
