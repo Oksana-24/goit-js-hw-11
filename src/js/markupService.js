@@ -1,4 +1,5 @@
-export default  function createMarkup(arrImages) {
+import showGallary from './simpleLightBox'
+export default function createMarkup(arrImages) {
     // console.log(arrImages)
 //webformatURL - посилання на маленьке зображення для списку карток.
 // largeImageURL - посилання на велике зображення.
@@ -35,6 +36,7 @@ export default  function createMarkup(arrImages) {
     </div>
     </div>
 </a>`).join('');
+    showGallary.refresh();
 }
 
 // export {
