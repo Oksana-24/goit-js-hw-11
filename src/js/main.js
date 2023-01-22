@@ -3,7 +3,7 @@ import axios, { formToJSON } from 'axios';
 
 // import createMarkup from './markupService'
 import showGallary from './simpleLightBox'
-// import SimpleLightbox from 'simplelightbox';
+import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
