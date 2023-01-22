@@ -1,4 +1,4 @@
-export default function createMarkup(arrImages) {
+export default  function createMarkup(arrImages) {
     // console.log(arrImages)
 //webformatURL - посилання на маленьке зображення для списку карток.
 // largeImageURL - посилання на велике зображення.
@@ -7,7 +7,7 @@ export default function createMarkup(arrImages) {
 // views - кількість переглядів.
 // comments - кількість коментарів.
 // downloads - кількість завантажень.
-    return markup = arrImages.map((
+    return markup =  arrImages.map((
         { webformatURL,
             largeImageURL,
             tags,
