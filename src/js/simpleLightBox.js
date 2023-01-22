@@ -1,3 +1,5 @@
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 export default function showGallary() {
     const gallery = document.querySelector('.gallery');
 
@@ -7,10 +9,9 @@ export default function showGallary() {
         event.preventDefault();
 
         new SimpleLightbox('.gallery a', { 
-        enableKeyboard: true,
-        showCounter: false,
+        overlayOpacity: 0.8,
+        captionType: 'att',
         captionsData: 'alt',
-        captionDelay: 250
     });
     }
 }
