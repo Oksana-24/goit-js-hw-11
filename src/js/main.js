@@ -1,6 +1,7 @@
 import axios from 'axios';
 // import apiInstance from './api';
 // import createMarkup from './markupService';
+import createMarkup from './markupService'
 import  showGallary  from './simpleLightBox';
 
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
@@ -68,8 +69,8 @@ async function getPicture(name, page = 1) {
     try {
         const response = await axios.get(baseUrl,options);
 
-        console.log(response.data);
-        console.log(response.data.hits);
+        // console.log(response.data);
+        // console.log(response.data.hits);
         searchItems += response.data.hits.length;
 
         if (!response.data.hits.length) {
@@ -80,7 +81,8 @@ async function getPicture(name, page = 1) {
 
         gallery.insertAdjacentHTML('beforeend', createMarkup(response.data.hits))
         observer.observe(guard);
-
+        
+        return response
     } catch (error) {
         console.log(error)
     }
@@ -90,18 +92,17 @@ function inInfinityLoad(entries, observer) {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
             page += 1;
-            const maxPages = Math.round(
-                resp.data.totalHits / resp.data.hits.length);
-            
-            
-            
-            getPicture(page).then(response => {
+            getPicture(name, page).then(response => {
+                const maxPages = Math.round(
+                response.data.totalHits / response.data.hits.length);
                 createMarkup(response.data.hits);
-                if (page === maxPages) {
-                    observer.unobserver(guard);
-                    Notify.info("We're sorry, but you've reached the end of search results.", { timeout: 1500 })
-                }
+            if (page === maxPages) {
+                observer.unobserve(guard);
+                Notify.info("We're sorry, but you've reached the end of search results.", { timeout: 1500 });
+                    
+            }
             })
+            return
         }
     });
     
