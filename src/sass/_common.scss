@@ -1,5 +1,8 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
  input {
-    height:30px;
-    width: 250px;
+   height: 40px;
+      width: 250px;
+      border-radius: 5px;
+      border-color: green;
+      margin-right: 5px;
  }
