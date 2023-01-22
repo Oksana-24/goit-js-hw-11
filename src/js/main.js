@@ -1,8 +1,11 @@
 import axios from 'axios';
-import apiInstance from './api';
+// import apiInstance from './api';
 import createMarkup from './markupService';
+import  showGallary  from './simpleLightBox';
 
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const searchForm = document.querySelector('.search-form');
 const input = document.querySelector('input');
@@ -57,7 +60,7 @@ async function getPicture(name, page = 1) {
             orientation: "horizontal",
             safesearch: true,
             page: page,
-            per_page: 30
+            per_page: 40
         },
         
     };
