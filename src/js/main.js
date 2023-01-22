@@ -3,7 +3,7 @@ import axios, { formToJSON } from 'axios';
 
 // import createMarkup from './markupService'
 import showGallary from './simpleLightBox'
-import SimpleLightbox from 'simplelightbox';
+// import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
@@ -20,6 +20,12 @@ const options = {
     rootMargin: '300px',
     threshold: 1.0
 }
+
+const gallerySimpleLightbox = new SimpleLightbox('.gallery a', {
+  overlayOpacity: 0.8,
+        captionType: 'att',
+        captionsData: 'alt',
+});
 // іншціалізуємо об'єкт класу для scroll
 const observer = new IntersectionObserver(inInfinityLoad, options);
 
@@ -70,7 +76,7 @@ async function getPicture(name, page = 1) {
         const response = await axios.get(baseUrl,options);
 
         // console.log(response.data);
-        // console.log(response.data.hits);
+        console.log(response.data);
         searchItems += response.data.hits.length;
 
         if (!response.data.hits.length) {
@@ -126,7 +132,7 @@ function createMarkup(arrImages) {
     </div>
 </a>`).join('');
     gallery.insertAdjacentHTML('beforeend', markup);
-    // showGallary.refresh();
+    gallerySimpleLightbox.refresh();
 }
 
 function inInfinityLoad(entries, observer) {
