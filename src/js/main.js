@@ -1,6 +1,6 @@
 import axios from 'axios';
 // import apiInstance from './api';
-import createMarkup from './markupService';
+// import createMarkup from './markupService';
 import  showGallary  from './simpleLightBox';
 
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
