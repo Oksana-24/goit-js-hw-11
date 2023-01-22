@@ -1,12 +1,11 @@
-import axios from 'axios';
+import axios, { formToJSON } from 'axios';
 // import apiInstance from './api';
 // import createMarkup from './markupService';
 import createMarkup from './markupService'
-import  showGallary  from './simpleLightBox';
+import showGallary from './simpleLightBox'
 
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css';
+
 
 const searchForm = document.querySelector('.search-form');
 const input = document.querySelector('input');
