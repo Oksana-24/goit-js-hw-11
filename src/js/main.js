@@ -2,7 +2,7 @@ import axios, { formToJSON } from 'axios';
 // import apiInstance from './api';
 
 // import createMarkup from './markupService'
-import showGallary from './simpleLightBox'
+// import showGallary from './simpleLightBox'
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
@@ -76,7 +76,7 @@ async function getPicture(name, page = 1) {
         const response = await axios.get(baseUrl,options);
 
         // console.log(response.data);
-        console.log(response.data);
+        // console.log(response.data);
         searchItems += response.data.hits.length;
 
         if (!response.data.hits.length) {
