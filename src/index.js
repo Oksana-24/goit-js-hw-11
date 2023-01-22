@@ -1,3 +1,3 @@
 import apiServise from './js/api';
-import markupService from './js/markupService';
+import createMarkup from './js/markupService';
 import main from './js/main';
