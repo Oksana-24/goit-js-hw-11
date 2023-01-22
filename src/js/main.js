@@ -93,6 +93,8 @@ function inInfinityLoad(entries, observer) {
             const maxPages = Math.round(
                 resp.data.totalHits / resp.data.hits.length);
             
+            
+            
             getPicture(page).then(response => {
                 createMarkup(response.data.hits);
                 if (page === maxPages) {
