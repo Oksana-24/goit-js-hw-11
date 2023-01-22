@@ -29,6 +29,7 @@ searchForm.addEventListener('submit', onSearch);
 function onSearch(event) {
     event.preventDefault();
 
+    searchItems = 0;
     gallery.innerHTML = '';
 
     const name = input.value.trim();
@@ -36,7 +37,6 @@ function onSearch(event) {
 
     if (name !== '') {
         getPicture(name);
-        // input.value = '';
     }
 
     else {
@@ -70,7 +70,7 @@ async function getPicture(name, page = 1) {
 
         console.log(response.data);
         console.log(response.data.hits);
-        // searchItems += response.data.hits.length;
+        searchItems += response.data.hits.length;
 
         if (!response.data.hits.length) {
             return Notify.failure('Sorry, there are no images matching your search query. Please try again.', { timeout: 2500 });
@@ -80,7 +80,6 @@ async function getPicture(name, page = 1) {
 
         gallery.insertAdjacentHTML('beforeend', createMarkup(response.data.hits))
         observer.observe(guard);
-
 
     } catch (error) {
         console.log(error)
